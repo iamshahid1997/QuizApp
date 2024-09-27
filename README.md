@@ -64,17 +64,17 @@ To set up and run the Quiz App on your local machine, follow the steps below:
 
    ```
 
-3. **Run the development server**:
-    ```
-    npm run dev
-    ```
-
-4. **Install dependencies**:
+3. **Install dependencies**:
 
    ```bash
    npm install
 
    ```
+
+4. **Run the development server**:
+    ```
+    npm run dev
+    ```
 
 5. **Access the app**:
    ```bash
