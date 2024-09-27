@@ -10,7 +10,7 @@ interface OptionContainerProps {
 
 export default function OptionContainer({ option, isSelected, handleSelectedOptions }: OptionContainerProps) {
     return (
-        <div className={`w-full px-4 py-6 flex items-start gap-x-3 border-2  rounded-2xl
+        <div className={`w-full px-4 py-4 flex items-start gap-x-3 border-2  rounded-2xl
         ${isSelected ? 'border-[#44B77B]' : 'bg-[#F3F4FA] border-[#F3F4FA]'}
         `}
             onClick={() => {

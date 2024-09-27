@@ -35,7 +35,7 @@ export default function CurrentQuestion({ question, selectedOptions, setSelected
                 <div className='flex justify-center'>
                     <Image
                         src={question.image}
-                        width={100}
+                        width={80}
                         height={100}
                         alt="celebrate"
                         className='object-cover'
