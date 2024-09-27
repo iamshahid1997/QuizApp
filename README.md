@@ -46,7 +46,7 @@ To set up and run the Quiz App on your local machine, follow the steps below:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/quiz-app.git
+   git clone https://github.com/iamshahid1997/QuizApp.git
 
 2. **Navigate to the project directory**:
     ```bash
