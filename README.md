@@ -60,7 +60,7 @@ To set up and run the Quiz App on your local machine, follow the steps below:
 2. **Navigate to the project directory**:
 
    ```bash
-   cd quiz-app
+   cd QuizApp
 
    ```
 
