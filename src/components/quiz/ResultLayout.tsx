@@ -1,8 +1,8 @@
 import React from 'react'
-import ResultMeter from './ResultMeter';
+import ResultMeter from '../ResultMeter';
 import { useGetQuizAttempt } from '@/services/queries';
 import { GetQuizAttemptResponse } from '@/services/types';
-import ReviewBox from './ReviewBox';
+import ReviewBox from '../ReviewBox';
 
 interface ResultLayoutProps {
     attemptId: string;

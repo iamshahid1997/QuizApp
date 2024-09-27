@@ -1,11 +1,11 @@
 import { Option, Question } from '@/utils/quiz/types';
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
-import QuizProgress from './QuizProgress';
-import Button from './Button';
+import QuizProgress from '../QuizProgress';
+import Button from '../Button';
 import CurrentQuestion from './CurrentQuestion';
-import { useUpdateQuizAttempt } from '@/services/mutation';
 import ResultLayout from './ResultLayout';
+import { useQuizAttempt } from '@/customHooks/useQuizAttempt';
+import { useTimer } from '@/customHooks/useTimer';
 
 interface QuestionLayoutProps {
     questions: Question[];
@@ -13,49 +13,18 @@ interface QuestionLayoutProps {
 }
 
 export default function QuestionLayout({ questions, attemptId }: QuestionLayoutProps) {
-    // mutation to start Quiz
-    const updateQuizAttempt = useUpdateQuizAttempt();
+    const { currentQuestion, selectedOptions, setSelectedOptions, handleUpdateQuizAttempt, goToNextQuestion } = useQuizAttempt(questions, attemptId);
+    
+    // Use the timer hook, which starts when there are questions left
+    const { timer, resetTimer } = useTimer(currentQuestion <= questions.length - 1);
 
-    const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
-
-    const [timer, setTimer] = useState(0); // Timer state
-
-    console.log(timer);
-
-    useEffect(() => {
-        let interval: NodeJS.Timeout;
-
-        // Start timer only if there are questions left
-        if (currentQuestion <= questions.length - 1) {
-            interval = setInterval(() => {
-                setTimer((prev) => prev + 1); // Increment timer every second
-            }, 1000);
-        }
-        // Clear the interval on component unmount or when the condition changes
-        return () => clearInterval(interval);
-    }, [currentQuestion]);
-
-    function handleUpdateQuizAttempt() {
-        const questionId: string = questions[currentQuestion].id;
-
-        updateQuizAttempt.mutate({
-            attemptId: attemptId,
-            questionId: questionId,
-            selectedOptions: selectedOptions,
-            timeTaken: timer,
-            quizCompleted: currentQuestion == questions.length - 1 ? true : false
-        }, {
-            onSettled: (data, error) => {
-                if (error) return;
-                if (data) {
-                    setCurrentQuestion((prev) => prev + 1);
-                    setTimer(0);
-                    setSelectedOptions([]);
-                }
-            }
-        })
-    }
+    // Function to handle the 'Next' button click
+    const onNextClick = () => {
+        handleUpdateQuizAttempt(timer, () => {
+            goToNextQuestion(); // Proceed to next question
+            resetTimer(); // Reset the timer for the next question
+        });
+    };
 
     return (
         <div className='h-full w-full bg-primary relative overflow-hidden'>
@@ -81,9 +50,8 @@ export default function QuestionLayout({ questions, attemptId }: QuestionLayoutP
                             setSelectedOptions={setSelectedOptions}
                         />
                         <div className='w-full flex justify-center'>
-
                             <div className='bottom-2 w-[90%] fixed'>
-                                <Button text='Next' type='button' onClick={handleUpdateQuizAttempt} />
+                                <Button text='Next' type='button' onClick={onNextClick} />
                             </div>
                         </div>
                     </div>
@@ -97,5 +65,7 @@ export default function QuestionLayout({ questions, attemptId }: QuestionLayoutP
                 )}
             </div>
         </div>
-    )
+    );
 }
+
+

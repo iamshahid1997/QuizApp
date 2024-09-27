@@ -1,5 +1,5 @@
-import QuestionLayout from '@/components/QuestionLayout';
-import QuizStart from '@/components/QuizStart';
+import QuestionLayout from '@/components/quiz/QuestionLayout';
+import QuizStart from '@/components/quiz/QuizStart';
 import { useStartQuiz } from '@/services/mutation';
 import { useGetQuizQuery } from '@/services/queries';
 import { GetQuizResponse } from '@/services/types';

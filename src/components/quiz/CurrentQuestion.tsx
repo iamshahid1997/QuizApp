@@ -1,7 +1,7 @@
 import { Option, Question } from '@/utils/quiz/types'
 import React from 'react'
 import Image from 'next/image';
-import OptionContainer from './OptionContainer';
+import OptionContainer from '../OptionContainer';
 
 interface CurrentQuestionProps {
     question: Question;

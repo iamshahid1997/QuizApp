@@ -1,26 +1,36 @@
 import { axiosInstance } from "./contants";
-import { GetQuizAttemptRequest, GetQuizAttemptResponse, GetQuizRequest, GetQuizResponse, StartQuizRequest, StartQuizResponse, UpdateQuizAttemptRequest, UpdateQuizAttemptResponse } from "./types";
+import { API_URLS } from './apiUrls';
+import {
+    GetQuizAttemptParams,
+    GetQuizAttemptResponse,
+    GetQuizParams,
+    GetQuizResponse,
+    StartQuizPayload,
+    StartQuizResponse,
+    UpdateQuizAttemptPayload,
+    UpdateQuizAttemptResponse
+} from "./types";
 
-export const getQuiz = async (data: GetQuizRequest) => {
-    const response: GetQuizResponse = (await axiosInstance.get(`/api/quiz/${data.quizId}`)).data;
+export const getQuiz = async (data: GetQuizParams) => {
+    const response: GetQuizResponse = (await axiosInstance.get(API_URLS.getQuiz(data.quizId))).data;
     return response;
 }
 
-export const getQuizAttempt = async (data: GetQuizAttemptRequest) => {
-    const response: GetQuizAttemptResponse = (await axiosInstance.get(`/api/quizAttempt/${data.attemptId}`)).data;
+export const getQuizAttempt = async (data: GetQuizAttemptParams) => {
+    const response: GetQuizAttemptResponse = (await axiosInstance.get(API_URLS.getQuizAttempt(data.attemptId))).data;
     return response;
 }
 
-export const startQuiz = async (data: StartQuizRequest) => {
-    const response: StartQuizResponse = (await axiosInstance.post('/api/quiz/start', {
+export const startQuiz = async (data: StartQuizPayload) => {
+    const response: StartQuizResponse = (await axiosInstance.post(API_URLS.startQuiz, {
         userId: data.userId,
         quizId: data.quizId
     })).data;
     return response;
 }
 
-export const updateQuizAttempt = async (data: UpdateQuizAttemptRequest) => {
-    const response: UpdateQuizAttemptResponse = (await axiosInstance.put('/api/quizAttempt/update', {
+export const updateQuizAttempt = async (data: UpdateQuizAttemptPayload) => {
+    const response: UpdateQuizAttemptResponse = (await axiosInstance.put(API_URLS.updateQuizAttempt, {
         attemptId: data.attemptId,
         questionId: data.questionId,
         selectedOptions: data.selectedOptions,
