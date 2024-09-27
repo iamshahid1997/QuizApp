@@ -80,7 +80,8 @@ To set up and run the Quiz App on your local machine, follow the steps below:
    ```bash
    http://localhost:3000
    ```
-> **Important:** If you want to check this app on your mobile, please try - `http://192.168.1.x:3000` after running `npm run dev` . `http://192.168.1.x` - use IP Address.
+   
+> **Important:** If you want to check this app on your mobile, please try - `http://192.168.1.x:3000` after running `npm run dev` . `http://192.168.1.x` - use IP Address. Both your devices needs to be connected with the same internet.
 
 ## Project Structure
 

@@ -40,7 +40,7 @@ export default function QuizPage() {
     }
 
     return (
-        <div className='h-screen w-screen flex flex-col justify-center items-center select-none'>
+        <div className='h-[100dvh] w-screen flex flex-col justify-center items-center select-none'>
             <div className='h-full w-full max-w-screen-sm'>
                 {!attemptId && (
                     <QuizStart

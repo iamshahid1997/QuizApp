@@ -1,7 +1,6 @@
+import { QuizAttempt } from "./type";
 
-      import { QuizAttempt } from "./type";
-      
-      export const quizAttempts: QuizAttempt[] = [
+export const quizAttempts: QuizAttempt[] = [
     {
         "id": "attempt-jasovsmi9",
         "userId": "user1",
@@ -44,4 +43,3 @@
         ]
     }
 ];
-    
