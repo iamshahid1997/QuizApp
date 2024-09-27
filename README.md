@@ -64,17 +64,23 @@ To set up and run the Quiz App on your local machine, follow the steps below:
 
    ```
 
-3. **Install dependencies**:
+3. **Run the development server**:
+    ```
+    npm run dev
+    ```
+
+4. **Install dependencies**:
 
    ```bash
    npm install
 
    ```
 
-4. **Access the app**:
+5. **Access the app**:
    ```bash
    http://localhost:3000
    ```
+> **Important:** If you want to check this app on your mobile, please try - `http://192.168.1.x:3000` after running `npm run dev` . `http://192.168.1.x` - use IP Address.
 
 ## Project Structure
 
